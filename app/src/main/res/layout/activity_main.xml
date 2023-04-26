@@ -65,7 +65,7 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/main_img_goblin"
         android:layout_width="191dp"
         android:layout_height="131dp"
         android:layout_marginBottom="32dp"
@@ -82,7 +82,7 @@
         android:hint="10.0.2.2"
         android:inputType="text"
         android:text="10.0.2.2"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/main_img_goblin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -93,5 +93,15 @@
         android:text="Server IP:"
         app:layout_constraintBottom_toTopOf="@+id/main_input_ip"
         app:layout_constraintStart_toStartOf="@+id/main_input_ip" />
+
+    <ImageView
+        android:id="@+id/main_img_info"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_img_goblin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_input_ip"
+        app:layout_constraintTop_toTopOf="@+id/main_input_ip"
+        app:srcCompat="@drawable/info" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
