@@ -1,6 +1,8 @@
 package com.example.taxcalculatorfrontend.BLL.Model;
 
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,10 +109,13 @@ public class Taxes {
         catch (Exception e){throw new RuntimeException(e);}
     }
 
-    private double round(double num){
-        DecimalFormat df = new DecimalFormat("#.##"); // create a decimal format with two digits after the decimal point
-        double roundedNum = Double.parseDouble(df.format(num)); // convert the formatted string back to a double
-        return roundedNum;
+    private double round(double value){
+        int places=2;
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
 }

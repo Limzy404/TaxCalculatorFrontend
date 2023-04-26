@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentManager manager;
     private EditText mainInputGross;
+    private EditText mainInputIP;
     private Button mainBtnCalculate;
     String apiString;
     Double amount;
@@ -61,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         mainInputGross = (EditText) findViewById(R.id.main_input_gross);
         mainBtnCalculate = (Button) findViewById(R.id.main_btn_calculate);
+        mainInputIP = (EditText) findViewById(R.id.main_input_ip);
     }
-
     public void startAPI(){
         String str = mainInputGross.getText().toString();
         try {
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this,TaxesAPI.class);
             intent.putExtra("amount",amount);
             intent.putExtra("messenger",new Messenger(handler));
+            intent.putExtra("ip",mainInputIP.getText().toString());
             startService(intent);
         } catch (NumberFormatException e) {
             Toast.makeText(getApplicationContext(), "Enter gross amount...", Toast.LENGTH_SHORT).show();

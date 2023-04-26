@@ -55,22 +55,43 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/main_tv_ip"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_btn_calculate">
+        app:layout_constraintTop_toBottomOf="@+id/main_btn_calculate"
+        app:layout_constraintVertical_bias="0.0">
 
     </FrameLayout>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="335dp"
-        android:layout_height="218dp"
+        android:layout_width="191dp"
+        android:layout_height="131dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/goblin_inc" />
+
+    <EditText
+        android:id="@+id/main_input_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="10.0.2.2"
+        android:inputType="text"
+        android:text="10.0.2.2"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/main_tv_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Server IP:"
+        app:layout_constraintBottom_toTopOf="@+id/main_input_ip"
+        app:layout_constraintStart_toStartOf="@+id/main_input_ip" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

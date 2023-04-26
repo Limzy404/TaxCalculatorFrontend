@@ -20,7 +20,9 @@ import java.net.URL;
 
 public class TaxesAPI extends IntentService {
 
-    String urlString = "http:/10.0.2.2:8084/api/global-service/calculate?amount=";
+    String requestString = ":8084/api/global-service/calculate?amount=";
+    String ipString;   //10.0.2.2 for android VM to access local host
+    final String localHostVM = "10.0.2.2";
     URL url;
     Double amount;
     HttpURLConnection urlConnection = null;
@@ -34,12 +36,13 @@ public class TaxesAPI extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         amount = intent.getExtras().getDouble("amount",0);
+        ipString = intent.getExtras().getString("ip",localHostVM);
         Log.d("DEBUG","Starting API");
         if (intent != null) {
             try{
                 String request;
                 StringBuilder sb = new StringBuilder();
-                sb.append(urlString).append(amount);
+                sb.append("http:/").append(ipString).append(requestString).append(amount);
                 request = sb.toString();
                 Log.i("DEBUG","Requesting: "+request);
                 url = new URL(request);
@@ -92,5 +95,9 @@ public class TaxesAPI extends IntentService {
             }
         }
 
+    }
+
+    public String getLocalHostVM() {
+        return localHostVM;
     }
 }
